@@ -1,0 +1,6 @@
+=== BILHETE DE CINEMA ===
+Cliente: zete
+Idade: 10 anos
+Filme: A volta dos que não foram
+Local: Sala 1
+=========================
