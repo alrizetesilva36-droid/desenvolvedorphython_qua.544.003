@@ -1,57 +1,45 @@
-import operacoes
+from modulo import limpar,potencia,raiz,volume_cubico,volume_cilindro
 
-def exibir_menu():
-    print("\n--- MENU DE OPÇÕES ---")
-    print("1. Calcular Potência")
-    print("2. Calcular Raiz Quadrada")
-    print("3. Calcular Volume de Paralelepípedo")
-    print("4. Calcular Volume de Cilindro")
-    print("5. Limpar Terminal")
-    print("0. Sair")
-    print("----------------------")
-
-def programa_principal():
+def main():
+    limpar()
     while True:
-        exibir_menu()
-        opcao = input("Escolha uma opção: ")
-
-        if opcao == "1":
-            base = float(input("Digite a base: "))
-            expoente = float(input("Digite o expoente: "))
-            resultado = operacoes.calcular_potencia(base, expoente)
-            print(f"Resultado: {base} ^ {expoente} = {resultado}")
-
-        elif opcao == "2":
-            num = float(input("Digite o número: "))
-            resultado = operacoes.calcular_raiz_quadrada(num)
-            if resultado is None:
-                print("Erro: Não existe raiz quadrada de número negativo nos reais.")
-            else:
-                print(f"A raiz quadrada de {num} é {resultado:.2f}")
-
-        elif opcao == "3":
-            c = float(input("Digite o comprimento: "))
-            l = float(input("Digite a largura: "))
-            a = float(input("Digite a altura: "))
-            resultado = operacoes.volume_paralelepipedo(c, l, a)
-            print(f"O volume do paralelepípedo é: {resultado:.2f}")
-
-        elif opcao == "4":
-            r = float(input("Digite o raio da base: "))
-            a = float(input("Digite a altura: "))
-            resultado = operacoes.volume_cilindro(r, a)
-            print(f"O volume do cilindro é: {resultado:.2f}")
-
-        elif opcao == "5":
-            operacoes.limpar_terminal()
-            print("Terminal limpo!")
-
-        elif opcao == "0":
-            print("Saindo do programa. Até logo!")
-            break
-            
-        else:
-            print("Opção inválida! Tente novamente.")
+        print("1 - Calcular potência")
+        print("2 - Calcular raíz")
+        print("3 - Calcular volume cúbico")
+        print("4 - Calcular volume cilíndrico")
+        print("5 - Sair")
+        opcao = input("Informe a opção desejada: ").strip()
+        limpar()
+        match opcao:
+            case "1":
+                x = int(input("Informe um número inteiro: "))
+                y = int(input("Informe a potência: "))
+                print(f"{x} elevado a {y} = {potencia(x, y)}")
+                continue
+            case "2":
+                x = int(input("Informe um número inteiro: "))
+                print(f"Raíz quadrada de {x} = {raiz(x)}")
+                continue
+            case "3":
+                b = int(input("Informe o valor da base: "))
+                l = int(input("Informe o valor da largura: "))
+                h = int(input("Informe o valor da altura: "))
+                print(f"Volume cúbico é {volume_cubico(b, l, h)}")
+                continue
+            case "4":
+                r = int(input("Informe o valor do raio: "))
+                h = int(input("Informe o valor da altura: "))
+                print(f"Volume do cilindro é {volume_cilindro(b, h)}")
+                continue
+            case "5":
+                break
+            case _:
+                print("Opção inválida.")
+                continue
 
 if __name__ == "__main__":
-    programa_principal()
+    main()
+    
+
+
+            

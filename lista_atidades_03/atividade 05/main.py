@@ -1,17 +1,11 @@
 def fibonacci(n):
-    if n == 0:
-        return 0
-    if n == 1:
-        return 1
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    return n if n<= 1 else fibonacci(n - 1) + fibonacci(n - 2)
 
+def main():
+    n = int(input("Digite um número inteiro: "))
+    print(f"O número da sequência de Fibonacci: {fibonacci(n)}")
 
-numero = int(input("Digite um número inteiro: "))
-
-if numero < 0:
-    print("Digite um número maior ou igual a zero.")
-else:
-    print(f"Sequência de Fibonacci até {numero}:")
-    for i in range(numero + 1):
-        print(fibonacci(i), end=" ")
-    print()
+if __name__ == "__main__":
+    main()
+   
+    
