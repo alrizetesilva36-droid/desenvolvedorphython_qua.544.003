@@ -1,30 +1,29 @@
-import os 
+import os
 import datetime
-
 from datetime import date
 
+from modells import Conta
 
-from models import Conta
 
 def limpar():
     os.system("cls" if os.name == "nt" else "clear")
 
 def hoje():
-    return date.today().striftime("%d/%n/%Y")
+    return date.today().strftime("%d/%m/%Y")
 
 def agora():
-    return datetime.datetime.now().striftime("%H/%M/%S")
+    return datetime.datetime.now().strftime("%H:%M:%S")
 
 def main():
-    cc = Conta(titular="",agencia="",n_conta="10112-4",saldo=0.0)
-    limpar
+    cc = Conta(titular="",cpf="",agencia="1234-5",n_conta="10123-4",saldo=0.0)
+
+    limpar()
 
     cc.titular = input("Informe o nome do titular da conta: ").strip().title()
     cc.cpf = input("Informe o CPF do titular da conta: ").strip()
 
     limpar()
-
-    print(f" Conta criada no dia {hoe(cc.titular)} ás {agora()}.")
+    print(f"Conta criada no dia {hoje()} às {agora()}.")
 
     while True:
         print("0 - Sair do programa")
@@ -42,27 +41,28 @@ def main():
                 cc.consultar_conta()
                 continue
             case "2":
-                valor = float(input("Informe o valor a ser depositado: R$"). replace(",","."))
+                valor = float(input("Informe o valor a ser depositado: R$ ").replace(",","."))
                 if valor >= 0:
-                    print(f"Depósito efetuado com sucesso, ás {agora(valor):.2f}")
+                    print(f"Depósito efetuado com sucesso, às {agora()} do dia {hoje()}.")
+                    print(f"Saldo atual: R$ {cc.fazer_deposito(valor):.2f}")
                 else:
-                    print("Depósito não pode ser efetuado.")
-                    continue
+                    print("Depósito não pôde ser efetuado.")
+                continue
             case "3":
-                valor = float(input("informe o valor do saque: R$ ").replace(",","."))
+                valor = float(input("Informe o valor do saque: R$ ").replace(",","."))
                 if valor >= 0:
                     if valor <= cc.saldo:
-                        print(f"Saque efetuado com sucesso as {agora()} do dia {hoje()}.")
-                        print(f"Saldo atual: R$ {cc. fazer_saque(valor):.2f}")
+                        print(f"Saque efetuado com sucesso às {agora()} do dia {hoje()}.")
+                        print(f"Saldo atual: R$ {cc.fazer_saque(valor):.2f}")
                     else:
-                      print("Saldo insuficiente.")       
+                        print("Saldo insuficiente.")
                 else:
-                 print("Valor não pode ser sacado.")
-                 continue
-            case _ :
-                 print("Opção inválida.")
-                 continue
-        if __name__ == "__main__":
-            main()    
+                    print("Valor não pode ser sacado.")
+                continue
+            case _:
+                print("Opção inválida.")
+                continue
+
+
 if __name__ == "__main__":
     main()

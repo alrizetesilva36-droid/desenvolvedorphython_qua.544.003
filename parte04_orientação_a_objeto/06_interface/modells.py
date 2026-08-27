@@ -6,16 +6,17 @@ class IConta(ABC):
         pass
 
     @abstractmethod
-    def fazer_deposito():
+    def fazer_deposito(valor):
         pass
 
     @abstractmethod
-    def fazer_saque():
+    def fazer_saque(valor):
         pass
 
 class Conta(IConta):
     def __init__(self,titular,cpf,agencia,n_conta,saldo):
-        self.__ cpf = cpf 
+        self.__titular = titular
+        self.__cpf = cpf
         self.__agencia = agencia
         self.__n_conta = n_conta
         self.__saldo = saldo
@@ -39,7 +40,7 @@ class Conta(IConta):
     @property
     def agencia(self):
         return self.__agencia
-    
+
     @agencia.setter
     def agencia(self,agencia):
         self.__agencia = agencia
@@ -47,7 +48,7 @@ class Conta(IConta):
     @property
     def n_conta(self):
         return self.__n_conta
-    
+
     @n_conta.setter
     def n_conta(self,n_conta):
         self.__n_conta = n_conta
@@ -55,23 +56,23 @@ class Conta(IConta):
     @property
     def saldo(self):
         return self.__saldo
-    
+
     @saldo.setter
     def saldo(self,saldo):
         self.__saldo = saldo
 
-# metodos da interface
-def consultar_conta(self):
-    print(f"Nome do titular da conta:{self.__titular}")
-    print(f"CPF do titular da conta:{self.__cpf}")
-    print(f"Agencia da conta:{self.__agencia}")
-    print(f"Numero da conta:{self.__n_conta}")
-    print(f"Saldo da conta:{self.__saldo:.2f}")
+    # métodos da interface
+    def consultar_conta(self):
+        print(f"Nome do titular da conta: {self.__titular}")
+        print(f"CPF do titular da conta: {self.__cpf}")
+        print(f"Agência da conta: {self.__agencia}")
+        print(f"Número da conta: {self.__n_conta}")
+        print(f"Saldo da conta: R$ {self.__saldo:.2f}")
 
-def fazer_deposito(self,valor):
-    self.__saldo += valor
-    return self.__saldo
+    def fazer_deposito(self,valor):
+        self.__saldo += valor
+        return self.__saldo
 
-def fazer_saque(self,valor):
-    self.__saldo -= valor
-    return self. __saldo
+    def fazer_saque(self,valor):
+        self.__saldo -= valor
+        return self.__saldo
