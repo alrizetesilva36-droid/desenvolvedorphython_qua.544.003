@@ -18,9 +18,11 @@ def main():
     auto.write(f'git commit -m "{hoje()}"')
     auto.press("enter")
     auto.write("git push")
+    auto.sleep(3)
     auto.press("enter")
     auto.write("exit")
-
+    auto.press("enter")
+    
 
 
 if __name__ == "__main__":
