@@ -19,6 +19,7 @@ def main():
     auto.press("enter")
     auto.write("git push")
     auto.press("enter")
+    auto.write("exit")
 
 
 
