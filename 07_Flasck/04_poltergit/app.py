@@ -30,7 +30,7 @@ def commitar():
         auto.write("git push")
         auto.press("enter")
         auto.sleep(3)
-        auto.writr("exit")
+        auto.write("exit")
         auto.press("enter")
     return render_template("index.html",)
 
