@@ -1,7 +1,25 @@
 from flask import Flask, render_template , request
 import pyautogui as auto
+import webview
 
 from datetime import date
+import os
+import sys
+
+
+if getattr(sys, 'frozen', False):
+    template_folder = os.path.join(sys._MEIPASS, 'templates')
+    static_folder = os.path.join(sys._MEIPASS, 'static')
+    app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
+else:
+    app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")    
+
+
+
 
 app = Flask(__name__)
 
@@ -35,4 +53,12 @@ def commitar():
     return render_template("index.html",)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    #app.run(debug=True)
+    window = webview.create_window(
+        title="Poltergit",
+        url=app,
+        height=700
+
+    )
+
+webview.start()
